@@ -1,0 +1,121 @@
+1. Installing php on Mac
+	curl -s http://php-osx.liip.ch/install.sh | bash -s 5.4
+		Wait for while, type y and hit Enter if it asks you, then you paste the 
+		following line:
+	export PATH=/usr/local/php5/bin:$PATH
+2. Making folder on terminal
+	change directory to there home account and make a directory that you will work in, 	call it according to your mind. 
+	
+	terminal command
+		cd~
+		mkdir folder name
+3. Shell command
+	delete file: rm *.file extension
+	create folder: mkdir folder name
+	extract tar file: tar -zxvf “tar file”
+4. Setting up path in python
+	export ATH="$PATH:/usr/local/bin/python"
+5. making file using terminal
+	touch filename
+6. Installing and seeing version Django
+	*sudo python setup.py install
+	*django-admin.py —version
+7. Creating a Django project
+	$ django-admin startproject project_name 
+8. How to install and run django project
+
+9. How to uninstall Django on mac
+	delete the Django directory
+	the way to find Django directory: 
+		python -c "import sys; 
+		sys.path = sys.path[1:]; 
+		import django;
+		print(django.__path__)"
+10. The way to create Django project
+	1)create project
+	  $django-admin startproject project name
+	2)run server
+	  $python manage.py rumserver
+	3)create an application
+	  $python manage.py startalp app name
+	4)setting up app url
+	  in the seetings.py file, update INSTALLED_APPS tuple as follows
+		INSTALLED_APPS = (
+			'django.contrib.admin',
+			'django.contrib.auth',
+			'django.contrib.contenttypes',
+			'django.contrib.sessions',
+			'django.contrib.messages',
+			'django.contrib.staticfiles',
+			'myapp’,#this is just setting up url
+		)
+	5)initiating the database
+	  $python manage.py syncdb
+	6)creating user
+	  $python manage.py createsuperuser
+	
+11. Installing puts module(provide timezone definitions for python)
+	pip install pytz
+12. Creating a new table with migrations
+	*python manage.py make migrations app name
+	this command results following result:
+		Migrations for 'blog':
+		  0001_initial.py:
+		    - Create model Post
+	*python manage.py sqlmigrate blog 0001
+	*python manage.py migrate
+13. How to create object in Django with terminal
+	*python manage.py shell
+		this results python shell, next type the following lines:
+		>>> from django.contrib.auth.models import User
+		>>> from blog.models import Post
+		>>> user = User.objects.get(username='admin')
+		>>> Post.objects.create(title='One more post',
+					slug='one-more-post',
+					body='Post body.',
+					author=user)
+		>>> post.save()
+14. Changing server port in Django
+	1)python manage.py runserver your_port
+	2)add a few lines to manage.py which dynamically modify the default port number
+	  before invoking the reserver command:
+	 
+		import django
+		django.setup()
+	
+		from django.core.management.commands.runserver import Command as runserver
+    		runserver.default_port = "8080"
+15. Where is pre-installed Python 3.6 on Mac
+	/Library/Frameworks/Python.framework/Versions/3.6/
+16. How to install djnago-taggit
+	sudo pip install django-taggit==“latest version”
+17. How to install home-brew
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/	master/install)"
+	- How to run solr 6.4.0
+		cd solr-6.4.0
+	start	
+		bin/solr start -e cloud -noprompt
+		bin/solr start
+	stop
+		bin/solr stop -e cloud -noprompt -all
+		bin/solr stop
+- TypeError: context must be a dict rather than Context
+	When I ran the command
+		python manage.py build_solr_schema
+	I got this error
+		TypeError: context must be a dict rather than Context
+	URL: https://stackoverflow.com/questions/45739518/typeerror-context-must-be-a-dict-rather-than-context
+		https://github.com/django-haystack/django-haystack/pull/1504/commits/295584314e19a191a59450e053b21809adceca2a
+
+- When reload solr core
+	error: Plugin init failure for [schema.xml] analyzer/filter: Error instantiating class: 'org.apache.lucene.analysis.core.StopFilterFactory'.
+	solve: removing enablePositionIncrements="true" and side="front"from schema.xml
+
+18. How to deal with npm certificate npm install
+	npm config set registry http://registry.npmjs.org/ --global
+
+19. How to deal with gem install with certificate
+	copy certificate file in C:\Ruby25-x64\ssl\certs and double-click c_rehash.rb file. after that gem install again.
+
+20. How to install sublime on ubuntu while occurs certificate
+	
